@@ -37,11 +37,9 @@ public class SkillsController {
     }
 
     @PreAuthorize("hasRole('ADMIN')")
-    @PutMapping("/skills/{id}")
-    public ResponseEntity<SkillDto> update(@PathVariable("id") Long id) {
-        SkillDto skill = skillsService.findById(id);
+    @PutMapping("/skills")
+    public ResponseEntity<SkillDto> update(@RequestBody SkillDto skill) {
         SkillDto updatedSkill = skillsService.update(skill);
         return ResponseEntity.ok(updatedSkill);
     }
-
 }
